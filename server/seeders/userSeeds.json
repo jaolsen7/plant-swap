@@ -1,0 +1,42 @@
+[
+  {
+    "username": "BrandonH",
+    "email": "bh@gmail.com",
+    "password": "password"
+  },
+  {
+    "username": "JeremyK",
+    "email": "jk@gmail.com",
+    "password": "password"
+  },
+  {
+    "username": "NicoB",
+    "email": "nb@gmail.com",
+    "password": "password"
+  },
+  {
+    "username": "DanM",
+    "email": "dm@gmail.com",
+    "password": "password"
+  },
+  {
+    "username": "ToddK",
+    "email": "tk@gmail.com",
+    "password": "password"
+  },
+  {
+    "username": "ChristianM",
+    "email": "cm@gmail.com",
+    "password": "password"
+  },
+  {
+    "username": "CamdenL",
+    "email": "cl@gmail.com",
+    "password": "password"
+  },
+  {
+    "username": "MichaelM",
+    "email": "mm@gmail.com",
+    "password": "password"
+  }
+]
