@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
 
 const plantSchema = new Schema({
   plantDescription: {
@@ -24,15 +23,10 @@ const plantSchema = new Schema({
     trim: true,
   },
   zipCode: {
-    type: Number,
+    type: String,
     required: "You need a valid zipcode.",
     minlength: 5,
     maxlength: 5,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-    get: (timestamp) => dateFormat(timestamp),
   },
   comments: [
     {
@@ -45,16 +39,11 @@ const plantSchema = new Schema({
       commentAuthor: {
         type: String,
         required: 'You need to enter your username!',
-      },
-      createdAt: {
-        type: Date,
-        default: Date.now,
-        get: (timestamp) => dateFormat(timestamp),
-      },
+      }
     },
   ],
 });
 
-const Thought = model('Thought', thoughtSchema);
+const Plant = model('Plant', plantSchema);
 
-module.exports = Thought;
+module.exports = Plant;

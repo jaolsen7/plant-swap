@@ -2,7 +2,7 @@ const {
   AuthenticationError,
   UserInputError,
 } = require("apollo-server-express");
-const { User } = require("../models");
+const { User, Plant } = require("../models");
 const { signToken } = require("../util/auth");
 const { dateScalar } = require("./customScalars");
 
@@ -28,7 +28,7 @@ const resolvers = {
     },
     plantsByUsername: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Plant.find(params).sort({ createdAt: -1 });
+      return Plant.find(params);
     },
     plantsByZipcode: async (parent, args) => {
       return Plant.find({ zipCode: args.zipCode });
