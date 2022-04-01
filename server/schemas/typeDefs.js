@@ -7,11 +7,23 @@ const typeDefs = gql`
   type Query {
     "Find the logged in user."
     me: User
+    users: [User]
+    user(username: String!): User
+    plants: [Plant]
+    plantsByUsername(username: String!): [Plant]
+    plantsByZipcode(zipCode: Int!): [Plant]
+    plant(plantId: ID!): Plant
   }
 
   type Mutation {
     createUser(email: String!, password: String!, username: String!): Auth
     login(email: String!, password: String!): Auth
+    addFavorite(plantId: ID!): User
+    removeFavorite(plantId: ID!): User
+    addPlant(plantDescription: String!, plantName: String!, plantAuthor: String!, plantImage: String!, zipCode: Number!): Plant
+    addComment(plantId: ID!, commentText: String!, commentAuthor: String!): Plant
+    removePlant(plantId: ID!): Plant
+    removeComment(plantId: ID!, commentId: ID!): Plant
   }
 
   type Auth {
@@ -24,7 +36,26 @@ const typeDefs = gql`
     username: String!
     email: String!
     password: String!
-    lastLogin: Date
+    plants: [Plant]
+    favorites: [Plant]
+  }
+
+  type Plant {
+    _id: ID
+    plantDescription: String!
+    plantName: String!
+    plantAuthor: String!
+    plantImage: String!
+    zipCode: Int!
+    createdAt: String
+    comments: [Comment]!
+  }
+
+  type Comment {
+    _id: ID
+    commentText: String!
+    commentAuthor: String!
+    createdAt: String
   }
 `;
 

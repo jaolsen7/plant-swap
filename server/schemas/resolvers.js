@@ -15,7 +15,26 @@ const resolvers = {
       if (!ctx.user) {
         throw new AuthenticationError("Must be logged in.");
       }
-      return User.findOne({ email: ctx.user.email });
+      return User.findOne({ email: ctx.user.email }).populate("favorites").populate("plants");
+    },
+    users: async (parent, args, context) => {
+      return await User.find({}).populate("plants");
+    },
+    user: async (parent, { username }) => {
+      return User.findOne({ username }).populate('plants').populate("favorites");
+    },
+    plants: async (parent, args, context) => {
+      return await Plant.find({});
+    },
+    plantsByUsername: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Plant.find(params).sort({ createdAt: -1 });
+    },
+    plantsByZipcode: async (parent, args) => {
+      return Plant.find({ zipCode: args.zipCode });
+    },
+    plant: async (parent, { plantId }) => {
+      return Plant.findOne({ _id: plantId });
     },
   },
   Mutation: {
@@ -46,6 +65,97 @@ const resolvers = {
       user.lastLogin = Date.now();
       await user.save();
       return { token, user };
+    },
+    addFavorite: async (parent, { plantId }, context) => {
+      if (context.user) {
+        return await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { favorites: plantId } }
+        ).populate("favorites");
+      }
+      throw new AuthenticationError(
+        "You need to be logged in to add a favorite"
+      );
+    },
+    removeFavorite: async (parent, { plantId }, context) => {
+      if (context.user) {
+        return await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $pull: { favorites: plantId } }
+        ).populate("favorites");
+      }
+      throw new AuthenticationError(
+        "You need to be logged in to remove a favorite"
+      );
+    },
+    addPlant: async (parent, { plantDescription, plantName, plantImage, zipCode }, context) => {
+      if (context.user) {
+        const plant = await Plant.create({
+          plantDescription,
+          plantName,
+          plantAuthor: context.user.username,
+          plantImage,
+          zipCode
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { plants: plant._id } }
+        );
+
+        return plant;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    addComment: async (parent, { plantId, commentText }, context) => {
+      if (context.user) {
+        return Plant.findOneAndUpdate(
+          { _id: plantId },
+          {
+            $addToSet: {
+              comments: { commentText, commentAuthor: context.user.username },
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    removePlant: async (parent, { plantId }, context) => {
+      if (context.user) {
+        const plant = await Plant.findOneAndDelete({
+          _id: plantId,
+          plantAuthor: context.user.username,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { plants: plant._id } }
+        );
+
+        return plant;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    removeComment: async (parent, { plantId, commentId }, context) => {
+      if (context.user) {
+        return Plant.findOneAndUpdate(
+          { _id: plantId },
+          {
+            $pull: {
+              comments: {
+                _id: commentId,
+                commentAuthor: context.user.username,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
 };
