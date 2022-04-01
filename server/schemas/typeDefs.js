@@ -23,7 +23,8 @@ const typeDefs = gql`
     _id: ID!
     username: String!
     email: String!
-    lastLogin: Date!
+    password: String!
+    lastLogin: Date
   }
 `;
 

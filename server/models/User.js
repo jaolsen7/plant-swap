@@ -1,28 +1,47 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
-const userSchema = new Schema({
-  username: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true,
+const userSchema = new Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      match: [/.+@.+\..+/, "Must match an email address!"],
+    },
+    password: {
+      type: String,
+      required: true,
+      minlength: 5,
+    },
+    plants: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Plant",
+      },
+    ],
+    favorites: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Plant",
+      },
+    ],
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    match: [/.+@.+\..+/, "Must match an email address!"],
-  },
-  password: {
-    type: String,
-    required: true,
-    minlength: 5,
-  },
-  lastLogin: {
-    type: Date,
-    default: Date.now,
-  },
+  {
+    toJSON: {
+      virtuals: true,
+    },
+  }
+);
+
+userSchema.virtual('plantCount').get(function () {
+  return this.plants.length;
 });
 
 userSchema.pre("save", async function (next) {
