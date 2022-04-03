@@ -1,19 +1,20 @@
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../util/auth";
 import "./Navbar.css";
-import logo from "../logo.svg";
+import houseplant from "./houseplant.png";
 
-export default function Navbar2() {
-  const { isLoggedIn, logout } = useAuth();
+export default function Navbar() {
+
+  const { isLoggedIn, logout, user } = useAuth();
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark justify-content-start p-3">
-      <span className="navbar-brand mb-0 h1">Plant Swap</span>
-      <img src={logo} alt="home" width="50" height="50" />
+      <span className="navbar-brand mb-0 h1 neon">Plant Swap Lite</span>
+      <img src={houseplant} alt="home" />
       <NavLink to="/" className="navbar-link">
         Home
       </NavLink>
       <NavLink to="/plants" className="navbar-link">
-            Plants
+        Plants
       </NavLink>
       {isLoggedIn ? (
         <>
@@ -32,8 +33,12 @@ export default function Navbar2() {
           <NavLink to="/signup" className="navbar-link">
             Signup
           </NavLink>
+          <h3>Welcome Guest!</h3>
         </>
       )}
+      <div className="container justify-content-end">
+        <span class="navbar-text">Welcome {isLoggedIn ? user.username : "Guest"}!</span>
+      </div>
     </nav>
   );
 }
