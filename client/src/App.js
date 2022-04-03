@@ -9,6 +9,13 @@ import SignUp from "./pages/SignUp";
 import { client } from "./util/apolloClient";
 import { AuthProvider } from "./util/auth";
 
+// import Footer from './components/Footer';
+
+// import Favorites from "./pages/Favorites";
+// import Plant from "./pages/Plant";
+// import Profile from "./pages/Profile";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -19,6 +26,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
+            {/* <Route path="/me" element={<Profile />} />
+            <Route path="/profiles/:username" element={<Profile />} />
+            <Route path="/plants" element={<Plant />} />
+            <Route path="/plants/:plantId" element={<Plant />} /> */}
             {/* Use <RequiredAuth> for pages that should only be accessible to a
             user that has logged in.*/}
             <Route
@@ -26,6 +37,8 @@ function App() {
               element={
                 <RequireAuth>
                   <ProtectedPageExample />
+                  {/* <Profile />
+                  <Plant /> */}
                 </RequireAuth>
               }
             />
