@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation, Navigate } from "react-router-dom";
 import { useAuth } from "../util/auth";
+import monstera from "../components/monstera.jpg";
+import "./Login.css";
 
 // This signup form is intentionally minimalist to reduce effort required to
 // customize it to your app's needs. See the excellent best practices guide for
@@ -53,10 +55,12 @@ export default function Login() {
 
   return (
     <div>
-      <h1>Login</h1>
+      <img className="bg-image img-fluid" src={monstera} alt="monstera" />
+      <div className="centered2 shadow-lg">
+      <h1 className="mx-5 px-5">Login</h1>
       <hr />
       <form onSubmit={handleSubmit}>
-        <div style={styles.formControl}>
+        <div className="justify-content-center" style={styles.formControl}>
           <label htmlFor="email" style={styles.label}>
             Email
           </label>
@@ -70,7 +74,7 @@ export default function Login() {
             onChange={handleInputChange}
           />
         </div>
-        <div style={styles.formControl}>
+        <div className="justify-content-center" style={styles.formControl}>
           <label htmlFor="new-password" style={styles.label}>
             Password
           </label>
@@ -85,11 +89,12 @@ export default function Login() {
           />
         </div>
         <div style={styles.formControl}>
-          <button disabled={loading} type="submit">
+          <button className="px-3 mx-2 my-1" disabled={loading} type="submit">
             {loading ? "Loading..." : "Submit"}
           </button>
         </div>
       </form>
+      </div>
     </div>
   );
 }

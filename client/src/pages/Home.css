@@ -6,7 +6,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: Brush Script MT, Brush Script Std, cursive;
+    font-family: fantasy;
 }
 .left {
     position: absolute;

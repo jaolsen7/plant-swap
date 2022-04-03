@@ -11,9 +11,8 @@ export default function Home() {
       <div className="container centered">
         <div className="row justify-content-center text-center">
           <div className="col-6 shadow-lg">
-            <h1 className="text-light text-decoration-underline display-1">Plant Swap Lite</h1>
-            <h1 className="display-4">is rooted in connection. Our aim is to bring together
-            plant hobbyists to share species in their collection and potentially swap with a friend!</h1>
+            <h1 className="text-light text-decoration-underline display-4">Plant Swap Lite</h1>
+            <h1>a place to share the plant species in your collection and potentially swap with a new friend!</h1>
           </div>
         </div>
       </div>

@@ -33,7 +33,6 @@ export default function Navbar() {
           <NavLink to="/signup" className="navbar-link">
             Signup
           </NavLink>
-          <h3>Welcome Guest!</h3>
         </>
       )}
       <div className="container justify-content-end">

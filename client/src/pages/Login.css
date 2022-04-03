@@ -1,0 +1,10 @@
+.bg-image {
+    position: relative;
+}
+.centered2 {
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    font-family: fantasy;
+}
