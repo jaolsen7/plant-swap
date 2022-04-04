@@ -1,3 +1,4 @@
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../util/auth";
 import "./Navbar.css";
@@ -13,13 +14,10 @@ export default function Navbar() {
       <NavLink to="/" className="navbar-link">
         Home
       </NavLink>
-      <NavLink to="/plants" className="navbar-link">
-        Plants
-      </NavLink>
       {isLoggedIn ? (
         <>
-          <NavLink to="/profiles/:username" className="navbar-link">
-            My Profile
+          <NavLink to="/me" className="navbar-link">
+            My Plants
           </NavLink>
           <button className="navbar-link" onClick={logout}>
             Logout

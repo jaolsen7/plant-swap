@@ -2,8 +2,7 @@
   --border: 1px solid #444;
 
   display: block;
-  width: 4em;
-  padding: 0.25em;
+  width: 15em;
   text-align: center;
   text-decoration: none;
   border: var(--border);

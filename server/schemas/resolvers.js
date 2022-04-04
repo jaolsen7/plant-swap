@@ -26,10 +26,6 @@ const resolvers = {
     plants: async (parent, args, context) => {
       return await Plant.find({});
     },
-    plantsByUsername: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Plant.find(params);
-    },
     plantsByZipcode: async (parent, args) => {
       return Plant.find({ zipCode: args.zipCode });
     },

@@ -1,3 +1,4 @@
+import React from "react";
 import { useAuth } from "../util/auth";
 import monstera from "../components/monstera.jpg";
 import "./Plant.css";
@@ -16,11 +17,11 @@ export default function Plant() {
 
   const plant = data?.plant || [];
   const comments = plant.comments || [];
-  console.log(comments);
 
   const [open, setOpen] = useState(false);
 
   const { isLoggedIn, user } = useAuth();
+
   return (
     <div>
       <img className="bg-image2 img-fluid" src={monstera} alt="monstera" />
@@ -30,7 +31,7 @@ export default function Plant() {
       <img className="bg-image2 img-fluid" src={monstera} alt="monstera" />
 
       <Container className="abs d-flex flex-row flex-wrap justify-content-center">
-          <Card className="col-5 my-5 mx-4 fs-4 shadow-lg border-5 border-dark">
+          <Card className="col-4 mb-4 mx-5 fs-4 shadow-lg border-5 border-dark">
             <Card.Img src={plant.plantImage} width="100%" height="100%" />
             <Card.ImgOverlay>
             <Card.Body className="col-12 text-white">
@@ -45,24 +46,24 @@ export default function Plant() {
                 <div className="bg-dark p-2" id="example-fade-text">
                   <Button variant="success" type="submit">Click to Comment/Swap</Button>
                   <Card.Text className="mt-2 mb-0 fs-6">{plant.plantDescription}</Card.Text>
-                  <Card.Text className="fs-6 text-secondary">Posted by: {plant.plantAuthor} from {plant.zipCode}</Card.Text>
+                  <Card.Text className="fs-6 text-muted">Posted by: {plant.plantAuthor} from {plant.zipCode}</Card.Text>
                 </div>
               </Fade>
             </Card.Body>
             </Card.ImgOverlay>
           </Card>
 
-            {comments.map((comment) => (
-          <Card className="col-10 my-3 mx-4 fs-4 shadow-lg border-5 border-dark">
-            <Card.Body className="col-12 text-dark">
-            <Card.Text className="text-center">Make a friend below!</Card.Text>
-              <Card.Text>as;ldfajksd;{comment.commentText}</Card.Text>
-              <Card.Text>{comment.commentAuthor}</Card.Text>
-            </Card.Body>
-          </Card>
-            ))}
+              <div className="col-7 mx-5 bg-dark shadow-lg">
+              {comments.map((comment) => (
+              <Card key={comment._id} className="col-11 my-4 mx-auto border-5 border-info bg-light">
+                <Card.Body className="col-12">
+                <Card.Text className="text-dark text-center fs-5 px-3">{comment.commentText}</Card.Text>
+                <Card.Text className="text-muted text-end fs-6">Posted by: {comment.commentAuthor}</Card.Text>
+                </Card.Body>
+              </Card>
+                ))}
+              </div>
       </Container>
-
     </div>
   );
 }

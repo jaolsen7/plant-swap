@@ -118,22 +118,9 @@ query Plant($plantId: ID!) {
 }
 `;
 
-export const QUERY_PLANT_BY_USERNAME = gql`
-query PlantsByUsername($username: String!) {
-  plantsByUsername(username: $username) {
-    _id
-    plantDescription
-    plantName
-    plantAuthor
-    plantImage
-    zipCode
-  }
-}
-`;
-
 export const QUERY_PLANT_BY_ZIPCODE = gql`
-query PlantsByUsername($username: String!) {
-  plantsByUsername(username: $username) {
+query PlantsByZipcode($zipCode: Int!) {
+  plantsByZipcode(zipCode: $zipCode) {
     _id
     plantDescription
     plantName
