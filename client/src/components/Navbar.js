@@ -36,7 +36,7 @@ export default function Navbar() {
         </>
       )}
       <div className="container justify-content-end">
-        <span class="navbar-text">Welcome {isLoggedIn ? user.username : "Guest"}!</span>
+        <span className="navbar-text">Welcome {isLoggedIn ? user.username : "Guest"}!</span>
       </div>
     </nav>
   );
