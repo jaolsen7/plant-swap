@@ -4,7 +4,21 @@
     "plantName": "ZZ Raven",
     "plantAuthor": "BrandonH",
     "plantImage": "https://images.squarespace-cdn.com/content/v1/58a4e30e2994ca7c63406c23/1614360638078-F84BH7687HL9RK1VLE9Z/9937AE5B-526D-43D6-9C15-20FE3BD9E155?format=1000w",
-    "zipCode": 93420
+    "zipCode": 93420,
+    "comments": [
+      {
+        "commentText": "love this plant!",
+        "commentAuthor": "adolfo"
+      },
+      {
+        "commentText": "Black leaves!!!",
+        "commentAuthor": "neil"
+      },
+      {
+        "commentText": "meow",
+        "commentAuthor": "martini"
+      }
+    ]
   },
   {
     "plantDescription": "This splashy variety has thick, waxy leaves that grow in interesting shapes. Easy to take care of!",
