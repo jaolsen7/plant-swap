@@ -25,7 +25,7 @@ export default function Plant() {
       <Container className="abs d-flex flex-row flex-wrap justify-content-center">
         {plants.map((plant) => (
           <Card key={plant._id} className="col-5 my-5 mx-4 fs-4 shadow-lg border-5 border-dark">
-            <Card.Img src={plant.plantImage} width="200" height="300" />
+            <Card.Img src={plant.plantImage} width="100%" height="100%" />
             <Card.ImgOverlay>
             <Card.Body className="col-12 text-white">
               <Button
