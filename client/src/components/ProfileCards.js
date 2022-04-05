@@ -60,7 +60,7 @@ export default function ProfileCards() {
             </Card.ImgOverlay>
           </Card>
         ))}
-      </Container>
+        </Container>
       </div>
   );
 }

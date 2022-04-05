@@ -84,7 +84,7 @@ const resolvers = {
         "You need to be logged in to remove a favorite"
       );
     },
-    addPlant: async (parent, { plantDescription, plantName, plantImage, zipCode }, context) => {
+    addPlant: async (parent, { userId, plantDescription, plantName, plantImage, zipCode }, context) => {
       if (context.user) {
         const plant = await Plant.create({
           plantDescription,
@@ -94,12 +94,13 @@ const resolvers = {
           zipCode
         });
 
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { plants: plant._id } }
-        );
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: userId },
+          { $addToSet: { plants: plant._id } },
+          { new: true }
+        ).populate("plants");
 
-        return plant;
+        return updatedUser;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
