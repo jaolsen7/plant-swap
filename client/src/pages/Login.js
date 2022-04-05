@@ -4,6 +4,7 @@ import { useLocation, Navigate } from "react-router-dom";
 import { useAuth } from "../util/auth";
 import monstera from "../components/monstera.jpg";
 import "./Login.css";
+import { NavLink } from "react-router-dom";
 
 // This signup form is intentionally minimalist to reduce effort required to
 // customize it to your app's needs. See the excellent best practices guide for
@@ -93,6 +94,9 @@ export default function Login() {
           <button className="px-3 mx-2 my-1" disabled={loading} type="submit">
             {loading ? "Loading..." : "Submit"}
           </button>
+          <NavLink to="/signup" className="my-2">
+            Don't have an account?
+          </NavLink>
         </div>
       </form>
       </div>

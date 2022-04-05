@@ -9,6 +9,8 @@ import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 export default function Cards() {
+  const { isLoggedIn, logout, user } = useAuth();
+
   const [searchParams] = useSearchParams();
   const zipCode = parseInt(searchParams.get("zipcode"));
 
@@ -20,11 +22,17 @@ export default function Cards() {
   const [open, setOpen] = useState(false);
 
   let navigate = useNavigate();
+
   const handleSubmit = async (plantId) => {
-    navigate(`/plants/${plantId}`);
+    if (isLoggedIn) {
+
+      navigate(`/plants/${plantId}`);
+    } else {
+      navigate("/login");
+      alert("You need to be logged-in to comment/swap!")
+    }
   };
 
-  const { isLoggedIn, logout, user } = useAuth();
   return (
     <div>
     <Container className="abs d-flex flex-row flex-wrap justify-content-center">

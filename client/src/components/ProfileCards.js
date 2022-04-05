@@ -11,21 +11,25 @@ import { useNavigate, useParams } from "react-router-dom";
 export default function ProfileCards() {
   const { isLoggedIn, user } = useAuth();
   const { username } = useParams();
-  console.log(username);
   const { loading, data } = useQuery(username ? QUERY_USER : ME, {
     variables: { username },
   });
 
-  console.log(data);
   const profile = data?.me || data?.user || {};
-  console.log(profile);
   const plants = profile.plants;
-  console.log(plants);
+
   const [open, setOpen] = useState(false);
 
   let navigate = useNavigate();
+
   const handleSubmit = async (plantId) => {
-    navigate(`/plants/${plantId}`);
+    if (isLoggedIn) {
+
+      navigate(`/plants/${plantId}`);
+    } else {
+      navigate("/login");
+      alert("You need to be logged-in to comment/swap!")
+    }
   };
   if (loading) {
     return <div>Loading...</div>;
