@@ -4,12 +4,18 @@ import monstera from "../components/monstera.jpg";
 import "./Plant.css";
 
 import { QUERY_PLANT } from "../util/queries";
-import { useQuery } from "@apollo/client";
-import { Container, Card, Button, Fade } from "react-bootstrap";
+import { useQuery, useMutation } from "@apollo/client";
+import { Container, Form, Card, Button, Fade } from "react-bootstrap";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { ADD_COMMENT } from '../util/mutations';
+
 
 export default function Plant() {
+  const { isLoggedIn, user } = useAuth();
+  console.log(user);
+  const name = user.username;
+  console.log(name);
   const { plantId } = useParams();
   const { loading, data } = useQuery(QUERY_PLANT, {
     variables: { plantId: plantId },
@@ -18,9 +24,35 @@ export default function Plant() {
   const plant = data?.plant || [];
   const comments = plant.comments || [];
 
-  const [open, setOpen] = useState(false);
+  const [commentText, setCommentText] = useState("");
+  const [addComment, { error }] = useMutation(ADD_COMMENT)
 
-  const { isLoggedIn, user } = useAuth();
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const { data } = await addComment({
+        variables: {
+          plantId,
+          commentText,
+          commentAuthor: name
+        },
+      });
+      setCommentText("");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    if (name === "commentText" && value.length <= 280) {
+      setCommentText(value);
+    }
+  }
+
+  const [open, setOpen] = useState(false);
 
   return (
     <div>
@@ -62,6 +94,13 @@ export default function Plant() {
                 </Card.Body>
               </Card>
                 ))}
+                <Form>
+                  <Form.Group className="m-3" controlId="formBasicComment">
+                  <Form.Label>Enter Comment:</Form.Label>
+                  <Form.Control name="commentText" as="input" value={commentText} placeholder="Type here..." onChange={handleChange} />
+                  </Form.Group>
+                  <Button className="mx-3 mb-3" variant="secondary" label="Comment" type="submit" onClick={handleFormSubmit}>Add Comment</Button>
+                </Form>
               </div>
       </Container>
     </div>
