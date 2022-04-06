@@ -2,9 +2,9 @@
 
 ## Description
 
-Plant Swap Lite connects plant lovers in the same zipcode for houseplant exchanges. This app allows users to post info about their favorite plant species and comment on other users posts in order to communicate if they want to swap.
+Plant Swap Lite connects plant lovers in the same zip code for house plant exchanges. This app allows users to post info about their favorite plant species and comment on other users posts in order to communicate if they want to swap.
 
-## [Try it yourself!]()
+## [Try it yourself!](https://stark-brushlands-04635.herokuapp.com/)
 
 ## Demo
 <!-- <img src="./assets/images/demo.gif" alt="sign up and log in demo" height="800" width="400"> -->
