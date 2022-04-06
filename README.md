@@ -11,9 +11,11 @@ Plant Swap Lite connects plant lovers in the same zip code for house plant excha
 
 ## Installation
 
+You will need MongoDB Compass, Express, React, Node and Apollo/GraphQL installed (see links below). To deploy to Heroku, you will need Mongo Atlas and to setup environmental variables.
 
 ## Usage
 
+Navigate to the live heroku application for immediate use. Otherwise, fork the repo, run "npm i" and use the scripts in package.json to run the front and/or back-end(s).
 
 ## Technology
 
