@@ -33,6 +33,11 @@ export default function Home() {
   return (
     <div>
       <img className="bg-image img-fluid" src={monstera} alt="monstera" />
+      <img className="bg-image img-fluid" src={monstera} alt="monstera" />
+      <img className="bg-image img-fluid" src={monstera} alt="monstera" />
+      <img className="bg-image img-fluid" src={monstera} alt="monstera" />
+      <img className="bg-image img-fluid" src={monstera} alt="monstera" />
+
       <div className="container centered">
         <div className="row justify-content-center text-center">
           <div className="col-6 shadow-lg">

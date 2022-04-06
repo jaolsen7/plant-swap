@@ -1,4 +1,4 @@
-# HAPPY-HOUR
+# Plant-Swap-Lite
 
 ## Description
 
@@ -26,7 +26,6 @@ Here is the technology used along with links to them where applicable:
 - [MongodbCompass](https://www.mongodb.com/products/compass)<br>
 - [ApolloGraphql](https://www.apollographql.com/)<br>
 - [REACT](https://reactjs.org/)<br>
-- [Mui](https://mui.com/)<br>
 - [MongodbAtlas](https://www.mongodb.com/atlas/database)<br>
 - [Heroku](https://desolate-earth-02940.herokuapp.com/)<br>
 - JavaScript<br>

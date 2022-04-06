@@ -8,7 +8,7 @@ export default function Navbar() {
 
   const { isLoggedIn, logout, user } = useAuth();
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark justify-content-start p-3">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark justify-content-start p-3 fixed-top">
       <span className="navbar-brand mb-0 h1 neon">Plant Swap Lite</span>
       <img src={houseplant} alt="home" />
       <NavLink to="/" className="navbar-link">
