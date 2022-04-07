@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router';
 export default function Home() {
   const [zipcode, setZipcode] = useState("");
   const [username, setUsername] = useState("");
+  
   const navigate = useNavigate();
 
   const handleUsernameInput = (e) => {

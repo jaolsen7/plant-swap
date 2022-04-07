@@ -13,9 +13,7 @@ import { ADD_COMMENT } from '../util/mutations';
 
 export default function Plant() {
   const { isLoggedIn, user } = useAuth();
-  console.log(user);
   const name = user.username;
-  console.log(name);
   const { plantId } = useParams();
   const { loading, data } = useQuery(QUERY_PLANT, {
     variables: { plantId: plantId },

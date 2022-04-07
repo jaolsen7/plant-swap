@@ -5,10 +5,9 @@ import { useMutation } from '@apollo/client';
 import "../pages/Plant.css";
 
 import { ADD_PLANT } from '../util/mutations';
-import { QUERY_PLANTS, ME } from '../util/queries';
-import { Container, Form, Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
-export default function PlantForm () {
+export default function PlantForm ({username}) {
   const { isLoggedIn, user } = useAuth();
 
   const [formState, setFormState] = useState({
@@ -17,6 +16,7 @@ export default function PlantForm () {
     plantAuthor: user.username,
     plantImage: '',
     zipCode: '',
+    username: username,
   });
 
   const [addPlant, { error, loading }] = useMutation(ADD_PLANT);
@@ -29,8 +29,7 @@ export default function PlantForm () {
         variables: {...formState},
       });
 
-      setFormState({plantDescription: '', plantName: '', plantAuthor: user.username, plantImage: '', zipCode: ''})
-
+      setFormState({plantDescription: '', plantName: '', plantAuthor: user.username, plantImage: '', zipCode: '', username: username})
     } catch (err) {
       console.error(err);
     }

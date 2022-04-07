@@ -32,7 +32,7 @@ export default function Profile() {
       <img className="bg-image2 img-fluid" src={monstera} alt="monstera" />
       <img className="bg-image2 img-fluid" src={monstera} alt="monstera" />
       <ProfileCards />
-      {isLoggedIn && user._id === profile._id ? (<PlantForm userId={profile._id} />) : (<p className="abs2 col-4 bg-dark text-light border border-light border-2 shadow-lg text-center">You need to login and goto "My Plants" tab to create a plant!</p>)}
+      {isLoggedIn && user._id === profile._id ? (<PlantForm username={username} />) : (<p className="abs2 col-4 bg-dark text-light border border-light border-2 shadow-lg text-center">You need to login and goto "My Plants" tab to create a plant!</p>)}
     </div>
   );
 }

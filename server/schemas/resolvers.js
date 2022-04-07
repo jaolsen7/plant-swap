@@ -23,8 +23,9 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate('plants').populate("favorites");
     },
-    plants: async (parent, args, context) => {
-      return await Plant.find({});
+    plants: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return await Plant.find(params);
     },
     plantsByZipcode: async (parent, args) => {
       return Plant.find({ zipCode: args.zipCode });
@@ -84,7 +85,7 @@ const resolvers = {
         "You need to be logged in to remove a favorite"
       );
     },
-    addPlant: async (parent, { userId, plantDescription, plantName, plantImage, zipCode }, context) => {
+    addPlant: async (parent, { username, plantDescription, plantName, plantImage, zipCode }, context) => {
       if (context.user) {
         const plant = await Plant.create({
           plantDescription,
@@ -95,7 +96,7 @@ const resolvers = {
         });
 
         const updatedUser = await User.findOneAndUpdate(
-          { _id: userId },
+          { username: username },
           { $addToSet: { plants: plant._id } },
           { new: true }
         ).populate("plants");
