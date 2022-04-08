@@ -17,7 +17,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addFavorite(plantId: ID!): User
     removeFavorite(plantId: ID!): User
-    addPlant(plantDescription: String!, plantName: String!, plantAuthor: String!, plantImage: String!, zipCode: Int!): Plant
+    addPlant(plantDescription: String!, plantName: String!, plantAuthor: String!, plantImage: String!, zipCode: String!): Plant
     addComment(plantId: ID!, commentText: String!, commentAuthor: String!): Plant
     removePlant(plantId: ID!): Plant
     removeComment(plantId: ID!, commentId: ID!): Plant

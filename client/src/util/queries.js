@@ -83,7 +83,7 @@ query Plant($plantId: ID!) {
 `;
 
 export const QUERY_PLANT_BY_ZIPCODE = gql`
-query PlantsByZipcode($zipCode: Int!) {
+query PlantsByZipcode($zipCode: String!) {
   plantsByZipcode(zipCode: $zipCode) {
     _id
     plantDescription
