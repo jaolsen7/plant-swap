@@ -33,7 +33,7 @@ function App() {
             <Route path="/me" element={<RequireAuth><Profile /></RequireAuth>} />
             <Route path="/profiles/:username" element={<Profile />} />
             <Route path="/plants" element={<Plant />} />
-            <Route path="/plants/:plantId" element={<OnePlant />} />
+            <Route path="/plants/:plantId" element={<RequireAuth><OnePlant /></RequireAuth>} />
             {/* Use <RequiredAuth> for pages that should only be accessible to a
             user that has logged in. */}
             <Route

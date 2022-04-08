@@ -64,42 +64,6 @@ query User($username: String!) {
 }
 `;
 
-export const QUERY_USERS = gql`
-query Users {
-  users {
-    _id
-    username
-    email
-    plants {
-      _id
-      plantDescription
-      plantName
-      plantAuthor
-      plantImage
-      zipCode
-      comments {
-        _id
-        commentText
-        commentAuthor
-      }
-    }
-  }
-}
-`;
-
-export const QUERY_PLANTS = gql`
-query Plants {
-  plants {
-    _id
-    plantDescription
-    plantName
-    plantAuthor
-    plantImage
-    zipCode
-  }
-}
-`;
-
 export const QUERY_PLANT = gql`
 query Plant($plantId: ID!) {
   plant(plantId: $plantId) {

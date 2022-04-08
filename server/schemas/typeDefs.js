@@ -7,9 +7,7 @@ const typeDefs = gql`
   type Query {
     "Find the logged in user."
     me: User
-    users: [User]
     user(username: String!): User
-    plants(username: String): [Plant]
     plantsByZipcode(zipCode: Int!): [Plant]
     plant(plantId: ID!): Plant
   }
@@ -19,7 +17,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addFavorite(plantId: ID!): User
     removeFavorite(plantId: ID!): User
-    addPlant(username: String!, plantDescription: String!, plantName: String!, plantAuthor: String!, plantImage: String!, zipCode: Int!): User
+    addPlant(plantDescription: String!, plantName: String!, plantAuthor: String!, plantImage: String!, zipCode: Int!): Plant
     addComment(plantId: ID!, commentText: String!, commentAuthor: String!): Plant
     removePlant(plantId: ID!): Plant
     removeComment(plantId: ID!, commentId: ID!): Plant

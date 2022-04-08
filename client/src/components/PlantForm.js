@@ -7,7 +7,7 @@ import "../pages/Plant.css";
 import { ADD_PLANT } from '../util/mutations';
 import { Form, Button } from "react-bootstrap";
 
-export default function PlantForm ({username}) {
+export default function PlantForm () {
   const { isLoggedIn, user } = useAuth();
 
   const [formState, setFormState] = useState({
@@ -15,8 +15,7 @@ export default function PlantForm ({username}) {
     plantName: '',
     plantAuthor: user.username,
     plantImage: '',
-    zipCode: '',
-    username: username,
+    zipCode: ''
   });
 
   const [addPlant, { error, loading }] = useMutation(ADD_PLANT);
@@ -28,8 +27,7 @@ export default function PlantForm ({username}) {
       const { data } = await addPlant({
         variables: {...formState},
       });
-
-      setFormState({plantDescription: '', plantName: '', plantAuthor: user.username, plantImage: '', zipCode: '', username: username})
+      setFormState({plantDescription: '', plantName: '', plantAuthor: user.username, plantImage: '', zipCode: ''})
     } catch (err) {
       console.error(err);
     }
@@ -47,7 +45,7 @@ export default function PlantForm ({username}) {
       {isLoggedIn ? (
         <>
         <div>
-          <Form className="abs2 col-4 bg-dark text-light border border-light border-2 shadow-lg">
+          <Form className="abs2 col-4 bg-dark text-light border border-light border-2 shadow-lg" onSubmit={handleFormSubmit}>
             <Form.Group className="m-3" controlId="formBasicPlant">
             <Form.Label>Share another species!</Form.Label>
             <Form.Control name="plantDescription" as="input" value={formState.plantDescription} placeholder="Enter description" onChange={handleChange} />
@@ -55,7 +53,7 @@ export default function PlantForm ({username}) {
             <Form.Control name="plantImage" as="input" value={formState.plantImage} placeholder="Enter image url" onChange={handleChange} />
             <Form.Control name="zipCode" as="input" value={formState.zipCode} placeholder="Enter zipcode" onChange={handleChange} />
             </Form.Group>
-            <Button className="mx-3 mb-3" variant="secondary" label="submit" type="submit" onClick={handleFormSubmit}>Create Plant</Button>
+            <Button className="mx-3 mb-3" variant="secondary" label="submit" type="submit" >Create Plant</Button>
           </Form>
             {error && (
               <div className="col-12 my-3 bg-danger text-white p-3">

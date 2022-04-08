@@ -17,15 +17,8 @@ const resolvers = {
       }
       return User.findOne({ email: ctx.user.email }).populate("favorites").populate("plants");
     },
-    users: async (parent, args, context) => {
-      return await User.find({}).populate("plants");
-    },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('plants').populate("favorites");
-    },
-    plants: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return await Plant.find(params);
+      return User.findOne({ username }).populate("plants").populate("favorites");
     },
     plantsByZipcode: async (parent, args) => {
       return Plant.find({ zipCode: args.zipCode });
@@ -85,7 +78,7 @@ const resolvers = {
         "You need to be logged in to remove a favorite"
       );
     },
-    addPlant: async (parent, { username, plantDescription, plantName, plantImage, zipCode }, context) => {
+    addPlant: async (parent, { plantDescription, plantName, plantImage, zipCode }, context) => {
       if (context.user) {
         const plant = await Plant.create({
           plantDescription,
@@ -95,13 +88,13 @@ const resolvers = {
           zipCode
         });
 
-        const updatedUser = await User.findOneAndUpdate(
-          { username: username },
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
           { $addToSet: { plants: plant._id } },
           { new: true }
         ).populate("plants");
 
-        return updatedUser;
+        return plant;
       }
       throw new AuthenticationError('You need to be logged in!');
     },

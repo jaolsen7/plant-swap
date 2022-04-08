@@ -45,17 +45,14 @@ mutation removeFavorite($plantId: ID!) {
 }`;
 
 export const ADD_PLANT = gql`
-mutation AddPlant($username: String!, $plantDescription: String!, $plantName: String!, $plantAuthor: String!, $plantImage: String!, $zipCode: Int!) {
-  addPlant(username: $username, plantDescription: $plantDescription, plantName: $plantName, plantAuthor: $plantAuthor, plantImage: $plantImage, zipCode: $zipCode) {
+mutation addPlant($plantDescription: String!, $plantName: String!, $plantAuthor: String!, $plantImage: String!, $zipCode: Int!) {
+  addPlant(plantDescription: $plantDescription, plantName: $plantName, plantAuthor: $plantAuthor, plantImage: $plantImage, zipCode: $zipCode) {
     _id
-    username
-    plants {
-      plantDescription
-      plantName
-      plantAuthor
-      plantImage
-      zipCode
-    }
+    plantDescription
+    plantName
+    plantAuthor
+    plantImage
+    zipCode
   }
 }`;
 
