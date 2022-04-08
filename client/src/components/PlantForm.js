@@ -6,9 +6,11 @@ import "../pages/Plant.css";
 
 import { ADD_PLANT } from '../util/mutations';
 import { Form, Button } from "react-bootstrap";
+import { useNavigate } from 'react-router';
 
 export default function PlantForm () {
   const { isLoggedIn, user } = useAuth();
+  const navigate = useNavigate();
 
   const [formState, setFormState] = useState({
     plantDescription: '',
@@ -27,7 +29,8 @@ export default function PlantForm () {
       const { data } = await addPlant({
         variables: {...formState},
       });
-      setFormState({plantDescription: '', plantName: '', plantAuthor: user.username, plantImage: '', zipCode: ''})
+      setFormState({plantDescription: '', plantName: '', plantAuthor: user.username, plantImage: '', zipCode: ''});
+      window.location.reload();
     } catch (err) {
       console.error(err);
     }
@@ -39,7 +42,7 @@ export default function PlantForm () {
     console.log(value);
     setFormState({...formState, [name]: value });
   };
-
+  
   return (
     <div>
       {isLoggedIn ? (
