@@ -27,8 +27,13 @@ export default function ProfileCards() {
   let navigate = useNavigate();
 
   const handleDelete = (plantId) => {
-    removePlant({ variables: { plantId } });
-    document.location.reload();
+    if (isLoggedIn) {
+      removePlant({ variables: { plantId } });
+      document.location.reload();
+    } else {
+      navigate("/login");
+      alert("You need to be logged-in to delete!")
+    }
   };
 
   const handleSubmit = async (plantId) => {

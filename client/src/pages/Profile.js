@@ -17,9 +17,7 @@ export default function Profile() {
   const { loading, data } = useQuery(username ? QUERY_USER : ME, {
     variables: { username },
   });
-  console.log(data);
   const profile = data?.me || data?.user || {};
-  console.log(profile);
   
   if (isLoggedIn && user.username === username) {
     return <Navigate to="/me" />;
