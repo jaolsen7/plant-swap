@@ -7,6 +7,8 @@ import { useQuery } from "@apollo/client";
 import { Container, Card, Button, Fade } from "react-bootstrap";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { REMOVE_PLANT } from "../util/mutations";
+import { useMutation } from "@apollo/client";
 
 export default function ProfileCards() {
   const { isLoggedIn, user } = useAuth();
@@ -20,7 +22,14 @@ export default function ProfileCards() {
 
   const [open, setOpen] = useState(false);
 
+  const [removePlant, { error, loading2 }] = useMutation(REMOVE_PLANT);
+
   let navigate = useNavigate();
+
+  const handleDelete = (plantId) => {
+    removePlant({ variables: { plantId } });
+    document.location.reload();
+  };
 
   const handleSubmit = async (plantId) => {
     if (isLoggedIn) {
@@ -54,6 +63,7 @@ export default function ProfileCards() {
                   <Button onClick={() => handleSubmit(plant._id)} variant="success" type="submit">Click to Comment/Swap</Button>
                   <Card.Text className="mt-2 mb-0 fs-6">{plant.plantDescription}</Card.Text>
                   <Card.Text className="fs-6 text-muted">Posted by: {plant.plantAuthor} from {plant.zipCode}</Card.Text>
+                  <Button onClick={() => handleDelete(plant._id)} variant="delete" type="delete" className="text-white border-white">X</Button>
                 </div>
               </Fade>
             </Card.Body>

@@ -6,11 +6,9 @@ import "../pages/Plant.css";
 
 import { ADD_PLANT } from '../util/mutations';
 import { Form, Button } from "react-bootstrap";
-import { useNavigate } from 'react-router';
 
 export default function PlantForm () {
   const { isLoggedIn, user } = useAuth();
-  const navigate = useNavigate();
 
   const [formState, setFormState] = useState({
     plantDescription: '',

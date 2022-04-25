@@ -8,7 +8,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { Container, Form, Card, Button, Fade } from "react-bootstrap";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { ADD_COMMENT } from '../util/mutations';
+import { ADD_COMMENT, REMOVE_COMMENT } from '../util/mutations';
 
 
 export default function Plant() {
@@ -24,7 +24,11 @@ export default function Plant() {
 
   const [commentText, setCommentText] = useState("");
   const [addComment, { error }] = useMutation(ADD_COMMENT)
+  const [removeComment, { error2 }] = useMutation(REMOVE_COMMENT);
 
+  const handleDelete = (commentId) => {
+    removeComment({ variables: { commentId, plantId } });
+  };
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -89,6 +93,7 @@ export default function Plant() {
                 <Card.Body className="col-12">
                 <Card.Text className="text-dark text-center fs-5 px-3">{comment.commentText}</Card.Text>
                 <Card.Text className="text-muted text-end fs-6">Posted by: {comment.commentAuthor}</Card.Text>
+                <Button onClick={() => handleDelete(comment._id)} variant="delete" type="delete" className="text-dark border-dark">X</Button>
                 </Card.Body>
               </Card>
                 ))}
