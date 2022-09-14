@@ -1,7 +1,6 @@
 import React from "react";
 import { useAuth } from "../util/auth";
 import monstera from "../components//images/monstera.jpg";
-import "./Home.css";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -42,7 +41,7 @@ export default function Home() {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-evenly"
- }
+  };
 
   return (
     <Container fluid style={background}>

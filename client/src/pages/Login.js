@@ -6,20 +6,23 @@ import monstera from "../components/images/monstera.jpg";
 import "./Login.css";
 import { NavLink } from "react-router-dom";
 
-// This signup form is intentionally minimalist to reduce effort required to
-// customize it to your app's needs. See the excellent best practices guide for
-// sign informs on web.dev https://web.dev/sign-in-form-best-practices/
-
-// TODO: customize styles or import styles with favorite css approach
 const styles = {
   formControl: {
     display: "flex",
-    padding: "0.25em",
+    padding: "0.25em 24px"
   },
   label: {
     flex: "0 1 6em",
     paddingRight: "0.25em",
   },
+};
+
+const background = {
+  backgroundImage: `url(${monstera})`,
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
+  height: "100vh",
+  width: "100vw"
 };
 
 const initialFormState = {
@@ -34,7 +37,6 @@ export default function Login() {
 
   useEffect(() => {
     if (error) {
-      // TODO: replace window alert with custom alert
       alert(error);
     }
   }, [error]);
@@ -56,10 +58,9 @@ export default function Login() {
   }
 
   return (
-    <div>
-      <img className="bg-image img-fluid" src={monstera} alt="monstera" />
+    <div style={background} className="container-fluid">
       <div className="centered2 shadow-lg">
-      <h1 className="mx-5 px-5">Login</h1>
+      <h1 className="mx-5 my-3 px-5">Login</h1>
       <hr />
       <form onSubmit={handleSubmit}>
         <div className="justify-content-center" style={styles.formControl}>
