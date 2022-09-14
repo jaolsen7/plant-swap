@@ -64,7 +64,7 @@ export default function Home() {
               <button className="mx-3 mb-3" variant="secondary" label="Username" type="search" onClick={handleUsernameSubmit}>Find User</button>
             </form>
           </Col>
-          <Col xs={4} className="mobile">
+          <Col xs={4}>
             <form
               style={{  background: "linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%)" }}
               className="bg-black text-light border border-light border-2 shadow-lg"
