@@ -1,9 +1,9 @@
 import React from "react";
 import { useAuth } from "../util/auth";
-import monstera from "../components/monstera.jpg";
+import monstera from "../components/images/monstera.jpg";
 import "./Plant.css";
 import ProfileCards from "../components/ProfileCards";
-import PlantForm from "../components/PlantForm";
+import PlantForm from "../components/PlantForm/PlantForm";
 
 
 import { Navigate, useParams } from 'react-router-dom';

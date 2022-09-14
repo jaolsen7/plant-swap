@@ -1,9 +1,10 @@
 import React from "react";
 import { useAuth } from "../util/auth";
-import monstera from "../components/monstera.jpg";
+import monstera from "../components//images/monstera.jpg";
 import "./Home.css";
-
-import { Container, Form, Button } from "react-bootstrap";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { useState } from "react";
 import { useNavigate } from 'react-router';
 
@@ -31,38 +32,46 @@ export default function Home() {
   };
 
   const { isLoggedIn, user } = useAuth();
-  return (
-    <div>
-      <img className="bg-image img-fluid" src={monstera} alt="monstera" />
-      <img className="bg-image img-fluid" src={monstera} alt="monstera" />
-      <img className="bg-image img-fluid" src={monstera} alt="monstera" />
-      <img className="bg-image img-fluid" src={monstera} alt="monstera" />
-      <img className="bg-image img-fluid" src={monstera} alt="monstera" />
 
-      <div className="container centered">
-        <div className="row justify-content-center text-center">
-          <div className="col-6 shadow-lg">
+  const background = {
+    backgroundImage: `url(${monstera})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    height: "100vh",
+    width: "100vw",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-evenly"
+ }
+
+  return (
+    <Container fluid style={background}>
+      <Row style={{marginTop: "50px"}} className="justify-content-center">
+        <Col xs={8} lg={{span: 4, offset: 1 }} style={{ textAlign: "right" }}>
             <h1 className="text-light text-decoration-underline display-4">Plant Swap Lite</h1>
-            <h1>a place to share the plant species in your collection and potentially swap with a new friend!</h1>
-          </div>
-        </div>
-      </div>
-      <Container>
-      <Form className="left col-4 bg-dark text-light border border-light border-2 shadow-lg">
-        <Form.Group className="m-3" controlId="formBasicUsername">
-        <Form.Label>Search for Users by Username:</Form.Label>
-        <Form.Control type="username" value={username} placeholder="Enter username" onChange={handleUsernameInput} />
-        </Form.Group>
-        <Button className="mx-3 mb-3" variant="secondary" label="Username" type="search" onClick={handleUsernameSubmit}>Find User</Button>
-      </Form>
-      <Form className="right col-4 bg-dark text-light border border-light border-2 shadow-lg">
-        <Form.Group className="m-3" controlId="formBasicSearch">
-        <Form.Label>Search for Plants by Zipcode:</Form.Label>
-        <Form.Control type="zipcode" value={zipcode} placeholder="Enter zipcode" onChange={handleZipcodeInput} />
-        </Form.Group>
-        <Button className="mx-3 mb-3" variant="secondary" label="Zipcode" type="search" onClick={handleZipcodeSubmit}>Find Plants</Button>
-      </Form>
-      </Container>
-    </div>
+            <h1>a place to share your collection and swap with a new friend!</h1>
+        </Col>
+      </Row>
+      <Row style={{marginTop: "-75px"}}className="justify-content-center">
+          <Col xs={8} lg={4}>
+            <form className="bg-dark text-light border border-light border-2 shadow-lg">
+              <div className="form-group m-3" controlId="formBasicUsername">
+                <label for="username">Search for Users by Username:</label>
+                <input id="username" className="form-control" type="username" value={username} placeholder="Enter username" onChange={handleUsernameInput} />
+              </div>
+              <button className="mx-3 mb-3" variant="secondary" label="Username" type="search" onClick={handleUsernameSubmit}>Find User</button>
+            </form>
+          </Col>
+          <Col xs={8} lg={4}>
+            <form className="bg-dark text-light border border-light border-2 shadow-lg">
+              <div className="form-group m-3" controlId="formBasicSearch">
+                <label for="zipcode">Search for Plants by Zipcode:</label>
+                <input id="zipcode" className="form-control" type="zipcode" value={zipcode} placeholder="Enter zipcode" onChange={handleZipcodeInput} />
+              </div>
+              <button className="mx-3 mb-3" variant="secondary" label="Zipcode" type="search" onClick={handleZipcodeSubmit}>Find Plants</button>
+            </form>
+        </Col>
+      </Row>
+    </Container>
   );
 }

@@ -1,14 +1,13 @@
 import React from "react";
 import { ApolloProvider } from "@apollo/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import RequireAuth from "./components/RequireAuth";
 import Home from "./pages/Home";
 import Plant from "./pages/Plant";
 import Profile from "./pages/Profile";
 import OnePlant from "./pages/OnePlant";
 import Login from "./pages/Login";
-import ProtectedPageExample from "./pages/ProtectedPageExample";
 import SignUp from "./pages/SignUp";
 import { client } from "./util/apolloClient";
 import { AuthProvider } from "./util/auth";
@@ -34,16 +33,6 @@ function App() {
             <Route path="/profiles/:username" element={<Profile />} />
             <Route path="/plants" element={<Plant />} />
             <Route path="/plants/:plantId" element={<RequireAuth><OnePlant /></RequireAuth>} />
-            {/* Use <RequiredAuth> for pages that should only be accessible to a
-            user that has logged in. */}
-            <Route
-              path="/protected"
-              element={
-                <RequireAuth>
-                  <ProtectedPageExample />
-                </RequireAuth>
-              }
-            />
           </Routes>
         </AuthProvider>
       </Router>

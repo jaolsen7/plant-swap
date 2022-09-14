@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useAuth } from "../util/auth";
+import { useAuth } from "../../util/auth";
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import "../pages/Plant.css";
+import "../../pages/Plant.css";
 
-import { ADD_PLANT } from '../util/mutations';
+import { ADD_PLANT } from '../../util/mutations';
 import { Form, Button } from "react-bootstrap";
 
 export default function PlantForm () {

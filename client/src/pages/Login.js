@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useLocation, Navigate } from "react-router-dom";
 import { useAuth } from "../util/auth";
-import monstera from "../components/monstera.jpg";
+import monstera from "../components/images/monstera.jpg";
 import "./Login.css";
 import { NavLink } from "react-router-dom";
 

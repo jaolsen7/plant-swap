@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../util/auth";
-import monstera from "../components/monstera.jpg";
+import monstera from "../components/images/monstera.jpg";
 import "./SignUp.css";
 
 // This signup form is intentionally minimalist to reduce effort required to
