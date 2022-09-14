@@ -47,25 +47,30 @@ export default function Home() {
   return (
     <Container fluid style={background}>
       <Row style={{marginTop: "50px"}} className="justify-content-center">
-        <Col xs={8} lg={{span: 4, offset: 1 }} style={{ textAlign: "right" }}>
-            <h1 className="text-light text-decoration-underline display-4">Plant Swap Lite</h1>
-            <h1>a place to share your collection and swap with a new friend!</h1>
+        <Col xs={8} lg={{span: 3, offset: 1 }} style={{ textAlign: "right" }}>
+            <h2 style={{ color: "#a9a9a9" }}>a place to share your houseplant collection and potentially swap with a new friend!</h2>
         </Col>
       </Row>
       <Row style={{marginTop: "-75px"}}className="justify-content-center">
-          <Col xs={8} lg={4}>
-            <form className="bg-dark text-light border border-light border-2 shadow-lg">
+          <Col xs={4}>
+            <form
+              style={{  background: "linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%)" }}
+              className="bg-black text-light border border-light border-2 shadow-lg"
+            >
               <div className="form-group m-3" controlId="formBasicUsername">
-                <label for="username">Search for Users by Username:</label>
+                <label for="username" className="mb-3">Search for Someone Specific:</label>
                 <input id="username" className="form-control" type="username" value={username} placeholder="Enter username" onChange={handleUsernameInput} />
               </div>
               <button className="mx-3 mb-3" variant="secondary" label="Username" type="search" onClick={handleUsernameSubmit}>Find User</button>
             </form>
           </Col>
-          <Col xs={8} lg={4}>
-            <form className="bg-dark text-light border border-light border-2 shadow-lg">
+          <Col xs={4} className="mobile">
+            <form
+              style={{  background: "linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%)" }}
+              className="bg-black text-light border border-light border-2 shadow-lg"
+            >
               <div className="form-group m-3" controlId="formBasicSearch">
-                <label for="zipcode">Search for Plants by Zipcode:</label>
+                <label for="zipcode" className="mb-3">Search for Someone Nearby:</label>
                 <input id="zipcode" className="form-control" type="zipcode" value={zipcode} placeholder="Enter zipcode" onChange={handleZipcodeInput} />
               </div>
               <button className="mx-3 mb-3" variant="secondary" label="Zipcode" type="search" onClick={handleZipcodeSubmit}>Find Plants</button>
