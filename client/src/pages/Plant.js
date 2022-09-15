@@ -1,19 +1,21 @@
 import React from "react";
 import { useAuth } from "../util/auth";
 import monstera from "../components/images/monstera.jpg";
-import "./Plant.css";
 import PlantCards from "../components/PlantCards";
+
+const background = {
+  backgroundImage: `url(${monstera})`,
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
+  height: "100vh",
+  width: "100vw"
+};
 
 export default function Plant() {
 
   const { isLoggedIn, user } = useAuth();
   return (
-    <div>
-      <img className="bg-image2 img-fluid" src={monstera} alt="monstera" />
-      <img className="bg-image2 img-fluid" src={monstera} alt="monstera" />
-      <img className="bg-image2 img-fluid" src={monstera} alt="monstera" />
-      <img className="bg-image2 img-fluid" src={monstera} alt="monstera" />
-      <img className="bg-image2 img-fluid" src={monstera} alt="monstera" />
+    <div style={background} className="container-fluid">
       <PlantCards />
     </div>
   );

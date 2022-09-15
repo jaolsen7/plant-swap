@@ -1,8 +1,6 @@
 import React from "react";
 import { useAuth } from "../util/auth";
 import monstera from "../components/images/monstera.jpg";
-import "./Plant.css";
-
 import { QUERY_PLANT } from "../util/queries";
 import { useQuery, useMutation } from "@apollo/client";
 import { Container, Form, Card, Button, Fade } from "react-bootstrap";

@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { useAuth } from "../../util/auth";
+import { useAuth } from "../util/auth";
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import "../../pages/Plant.css";
-
-import { ADD_PLANT } from '../../util/mutations';
+import { ADD_PLANT } from '../util/mutations';
 import { Form, Button } from "react-bootstrap";
 
 export default function PlantForm () {
@@ -45,13 +43,16 @@ export default function PlantForm () {
     <div>
       {isLoggedIn ? (
         <>
-        <div>
-          <Form className="abs2 col-4 bg-dark text-light border border-light border-2 shadow-lg" onSubmit={handleFormSubmit}>
+        <div className="row justify-content-center">
+          <Form
+            style={{  background: "linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%)" }}
+            className="col-sm-8 col-lg-4 text-light border border-light border-2 shadow-lg mb-5" onSubmit={handleFormSubmit}
+          >
             <Form.Group className="m-3" controlId="formBasicPlant">
             <Form.Label>Share another species!</Form.Label>
-            <Form.Control name="plantDescription" as="input" value={formState.plantDescription} placeholder="Enter description" onChange={handleChange} />
-            <Form.Control name="plantName" as="input" value={formState.plantName} placeholder="Enter name" onChange={handleChange} />
-            <Form.Control name="plantImage" as="input" value={formState.plantImage} placeholder="Enter image url" onChange={handleChange} />
+            <Form.Control className="mb-3" name="plantDescription" as="input" value={formState.plantDescription} placeholder="Enter description" onChange={handleChange} />
+            <Form.Control className="mb-3" name="plantName" as="input" value={formState.plantName} placeholder="Enter name" onChange={handleChange} />
+            <Form.Control className="mb-3" name="plantImage" as="input" value={formState.plantImage} placeholder="Enter image url" onChange={handleChange} />
             <Form.Control name="zipCode" as="input" value={formState.zipCode} placeholder="Enter zipcode" onChange={handleChange} />
             </Form.Group>
             <Button className="mx-3 mb-3" variant="secondary" label="submit" type="submit" >Create Plant</Button>

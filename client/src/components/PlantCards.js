@@ -1,6 +1,4 @@
 import { useAuth } from "../util/auth";
-import "../pages/Plant.css";
-
 import React from "react";
 import { QUERY_PLANT_BY_ZIPCODE } from "../util/queries";
 import { useQuery } from "@apollo/client";

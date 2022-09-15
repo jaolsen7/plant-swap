@@ -11,12 +11,8 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import { client } from "./util/apolloClient";
 import { AuthProvider } from "./util/auth";
-
 // import Footer from './components/Footer';
-
 // import Favorites from "./pages/Favorites";
-// import Plant from "./pages/Plant";
-// import Profile from "./pages/Profile";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
