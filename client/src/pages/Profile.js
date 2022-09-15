@@ -33,7 +33,7 @@ export default function Profile() {
       <ProfileCards />
       {isLoggedIn && user._id === profile._id ? (<PlantForm />
       ) : (
-        <div style={{ paddingBottom: "25vh" }} className="row justify-content-center">
+        <div style={{ paddingBottom: "33vh" }} className="row justify-content-center">
           <p className="col-4 bg-dark text-light border border-light border-2 shadow-lg text-center">Go to the "My Plants" tab to create a plant!</p>
         </div>
        )}

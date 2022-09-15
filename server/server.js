@@ -1,8 +1,8 @@
 const path = require("path");
-require("dotenv").config({ path: path.join(__dirname, ".env") });
-const express = require("express");
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
+console.log(process.env)
+;const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
-
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
 const { authMiddleware } = require("./util/auth");

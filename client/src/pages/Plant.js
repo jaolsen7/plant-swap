@@ -7,8 +7,8 @@ const background = {
   backgroundImage: `url(${monstera})`,
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
-  height: "100vh",
-  width: "100vw"
+  height: "auto",
+  width: "auto"
 };
 
 export default function Plant() {

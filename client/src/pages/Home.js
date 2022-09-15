@@ -1,5 +1,4 @@
 import React from "react";
-import { useAuth } from "../util/auth";
 import monstera from "../components//images/monstera.jpg";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -29,8 +28,6 @@ export default function Home() {
     event.preventDefault();
     navigate(`/plants?zipcode=${zipcode.trim()}`);
   };
-
-  const { isLoggedIn, user } = useAuth();
 
   const background = {
     backgroundImage: `url(${monstera})`,
