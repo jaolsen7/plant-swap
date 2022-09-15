@@ -16,7 +16,7 @@ export default function NavB() {
   return (
       <>
         <nav className="navb">
-          <Link to="/" className="navb-logo neon" id="lite">
+          <Link to="/" className="navb-logo neon">
             Plant Swap Lite
             <TbPlant style={{ marginLeft: "10px", marginBottom: "6px" }} />
           </Link>

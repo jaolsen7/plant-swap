@@ -21,6 +21,7 @@ export default function ProfileCards() {
   let navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
+
   const openDescription = async (plantId) => {
     if (window.innerWidth < 1080) {
       setOpen(false);
@@ -31,18 +32,20 @@ export default function ProfileCards() {
   }
 
   const handleDelete = (plantId) => {
-    if (isLoggedIn) {
+    if (isLoggedIn && user.username === username) {
       removePlant({ variables: { plantId } });
       document.location.reload();
+    } else if (isLoggedIn) {
+      navigate("/me");
+      alert("You need to be on your own profile to delete!")
     } else {
       navigate("/login");
-      alert("You need to be logged-in to delete!")
+      alert("Login to create and/or delete your own plants.")
     }
   };
 
   const handleSubmit = async (plantId) => {
     if (isLoggedIn) {
-
       navigate(`/plants/${plantId}`);
     } else {
       navigate("/login");

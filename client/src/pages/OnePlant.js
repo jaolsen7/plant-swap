@@ -3,16 +3,16 @@ import { useAuth } from "../util/auth";
 import monstera from "../components/images/monstera.jpg";
 import { QUERY_PLANT } from "../util/queries";
 import { useQuery, useMutation } from "@apollo/client";
-import { Container, Form, Card, Button, Fade } from "react-bootstrap";
+import { Form, Card, Button, Fade } from "react-bootstrap";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ADD_COMMENT, REMOVE_COMMENT } from '../util/mutations';
-
 
 export default function Plant() {
   const { isLoggedIn, user } = useAuth();
   const name = user.username;
   const { plantId } = useParams();
+  let navigate = useNavigate();
   const { loading, data } = useQuery(QUERY_PLANT, {
     variables: { plantId: plantId },
   });
@@ -24,8 +24,12 @@ export default function Plant() {
   const [addComment, { error }] = useMutation(ADD_COMMENT)
   const [removeComment, { error2 }] = useMutation(REMOVE_COMMENT);
 
-  const handleDelete = (commentId) => {
-    removeComment({ variables: { commentId, plantId } });
+  const handleDelete = (commentId, commentAuthor) => {
+    if (isLoggedIn && name === commentAuthor) {
+      removeComment({ variables: { commentId, plantId } });
+    } else {
+      alert("You can't delete someone else's comment! Submit a help ticket (link in progress)");
+    }
   };
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -50,19 +54,32 @@ export default function Plant() {
     if (name === "commentText" && value.length <= 280) {
       setCommentText(value);
     }
-  }
+  };
+
+  const handleProfile = async (commentAuthor) => {
+    if (isLoggedIn) {
+
+      navigate(`/profiles/${commentAuthor}`);
+    } else {
+      navigate("/login");
+      alert("You need to be logged-in to comment/swap!")
+    }
+  };
 
   const [open, setOpen] = useState(false);
 
-  return (
-    <div>
-      <img className="bg-image2 img-fluid" src={monstera} alt="monstera" />
-      <img className="bg-image2 img-fluid" src={monstera} alt="monstera" />
-      <img className="bg-image2 img-fluid" src={monstera} alt="monstera" />
-      <img className="bg-image2 img-fluid" src={monstera} alt="monstera" />
-      <img className="bg-image2 img-fluid" src={monstera} alt="monstera" />
+  const background = {
+    backgroundImage: `url(${monstera})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    height: "auto",
+    width: "auto",
+    paddingTop: "24px"
+  };
 
-      <Container className="abs d-flex flex-row flex-wrap justify-content-center">
+  return (
+    <div style={background} className="container-fluid">
+      <div className="d-flex flex-row flex-wrap justify-content-center">
           <Card className="col-4 mb-4 mx-5 fs-4 shadow-lg border-5 border-dark">
             <Card.Img src={plant.plantImage} width="100%" height="100%" />
             <Card.ImgOverlay>
@@ -84,26 +101,27 @@ export default function Plant() {
             </Card.Body>
             </Card.ImgOverlay>
           </Card>
-
-              <div className="col-7 mx-5 bg-dark shadow-lg">
+      </div>
+      <div style={{ paddingBottom: "25vh" }} className="d-flex flex-row justify-content-center">
+          <div style={{ marginBottom: "24px" }} className="col-8 mx-5 bg-dark shadow-lg">
               {comments.map((comment) => (
               <Card key={comment._id} className="col-11 my-4 mx-auto border-5 border-info bg-light">
                 <Card.Body className="col-12">
+                <Card.Text className="text-decoration-underline text-muted text-start fs-6" onClick={() => handleProfile(comment.commentAuthor)}>Posted by: {comment.commentAuthor}</Card.Text>
                 <Card.Text className="text-dark text-center fs-5 px-3">{comment.commentText}</Card.Text>
-                <Card.Text className="text-muted text-end fs-6">Posted by: {comment.commentAuthor}</Card.Text>
-                <Button onClick={() => handleDelete(comment._id)} variant="delete" type="delete" className="text-dark border-dark">X</Button>
+                <Button onClick={() => handleDelete(comment._id, comment.commentAuthor)} variant="delete" type="delete" className="text-end text-dark border-dark">X</Button>
                 </Card.Body>
               </Card>
                 ))}
-                <Form>
-                  <Form.Group className="m-3" controlId="formBasicComment">
-                  <Form.Label>Enter Comment:</Form.Label>
-                  <Form.Control name="commentText" as="input" value={commentText} placeholder="Type here..." onChange={handleChange} />
-                  </Form.Group>
-                  <Button className="mx-3 mb-3" variant="secondary" label="Comment" type="submit" onClick={handleFormSubmit}>Add Comment</Button>
-                </Form>
-              </div>
-      </Container>
+              <Form>
+                <Form.Group className="m-3" controlId="formBasicComment">
+                <Form.Label>Enter Comment:</Form.Label>
+                <Form.Control name="commentText" as="input" value={commentText} placeholder="Type here..." onChange={handleChange} />
+                </Form.Group>
+                <Button className="mx-3 mb-3" variant="secondary" label="Comment" type="submit" onClick={handleFormSubmit}>Add Comment</Button>
+              </Form>
+          </div>
+        </div>
     </div>
   );
 }

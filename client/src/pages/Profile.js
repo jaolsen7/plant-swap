@@ -31,7 +31,12 @@ export default function Profile() {
   return (
     <div style={background} className="container-fluid">
       <ProfileCards />
-      {isLoggedIn && user._id === profile._id ? (<PlantForm />) : (<p className="abs2 col-4 bg-dark text-light border border-light border-2 shadow-lg text-center">You need to login and goto "My Plants" tab to create a plant!</p>)}
+      {isLoggedIn && user._id === profile._id ? (<PlantForm />
+      ) : (
+        <div style={{ paddingBottom: "25vh" }} className="row justify-content-center">
+          <p className="col-4 bg-dark text-light border border-light border-2 shadow-lg text-center">Go to the "My Plants" tab to create a plant!</p>
+        </div>
+       )}
     </div>
   );
 }
