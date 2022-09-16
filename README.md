@@ -2,16 +2,14 @@
 
 ## Description
 
-Plant Swap Lite is a mobile-responsive web app that connects plant lovers in the same zip code for houseplant exchanges. This app allows users to post their favorite plant species and comment on other users posts in order to communicate if they want to swap.
+Plant Swap Lite is a mobile-responsive web app that connects plant lovers in the same zip code for houseplant exchanges. This CRUD app allows users to post their favorite plant species and comment on other users posts in order to communicate if they want to swap.
 
 ## [Try it yourself!](https://stark-brushlands-04635.herokuapp.com/)
 
 ## Demo
 
-Video tutorial:
-<!-- <img src="./assets/images/demo.gif" alt="sign up and log in demo" height="800" width="400"> -->
-
-Pictures:
+Video demonstrating mobile-responsive navbar and pages:
+![demo-gif](demo.gif)
 
 ## Installation
 
@@ -27,7 +25,7 @@ To create an app similar to this, you will need the MERN stack (MongoDB/Mongoose
 
 Then, you can set up your Apollo Server in /server/server.js. Connect your MongoDB Compass in the connection.js, which will require you to login to MongoAtlas, create a Cluster, set up a User, set up local browser connection, and using copy&pasting the appropriate links (which will go in the .env file as well). To deploy to Heroku later, you will need Mongo Atlas connected and your environmental variables setup. This app uses SECRET=secret and TOKEN_EXP=12h for JWT and MONGODB_URI for the connection string.
 
-With that all good to go, configure your models, schemas, seeds on the server-side and the mutations and queries on the client-side. After this, use React to create your front-end/import back-end data. Once finished,
+With that all good to go, configure your models, schemas, seeds on the server-side and the mutations and queries on the client-side. After this, use React to create your front-end/import back-end data. Once finished with you site, deploy it to Heroku and make sure to setup the MONGODB_URI environmental variable.
 
 Here is the technology used along with links to them where applicable:
 
