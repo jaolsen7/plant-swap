@@ -29,7 +29,7 @@ export default function ProfileCards() {
     } else {
       setOpen(!open);
     }
-  }
+  };
 
   const handleDelete = (plantId) => {
     if (isLoggedIn && user.username === username) {

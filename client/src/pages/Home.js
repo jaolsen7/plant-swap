@@ -48,7 +48,7 @@ export default function Home() {
         </Col>
       </Row>
       <Row style={{marginTop: "-75px"}}className="justify-content-center">
-          <Col xs={4}>
+          <Col xs={8} lg={4} className="mb-3">
             <form
               style={{  background: "linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%)" }}
               className="bg-black text-light border border-light border-2 shadow-lg"
@@ -60,7 +60,7 @@ export default function Home() {
               <button className="mx-3 mb-3" variant="secondary" label="Username" type="search" onClick={handleUsernameSubmit}>Find User</button>
             </form>
           </Col>
-          <Col xs={4}>
+          <Col xs={8} lg={4} className="mb-3">
             <form
               style={{  background: "linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%)" }}
               className="bg-black text-light border border-light border-2 shadow-lg"

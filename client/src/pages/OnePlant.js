@@ -80,7 +80,7 @@ export default function Plant() {
   return (
     <div style={background} className="container-fluid">
       <div className="d-flex flex-row flex-wrap justify-content-center">
-          <Card className="col-4 mb-4 mx-5 fs-4 shadow-lg border-5 border-dark">
+          <Card className="col-sm-8 col-lg-4 mb-4 mx-5 fs-4 shadow-lg border-5 border-dark">
             <Card.Img src={plant.plantImage} width="100%" height="100%" />
             <Card.ImgOverlay>
             <Card.Body className="col-12 text-white">
