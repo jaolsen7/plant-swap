@@ -9,13 +9,9 @@ Plant Swap Lite is a mobile-responsive web app that connects plant lovers in the
 Video demonstrating mobile-responsive navbar and pages:
 ![demo-gif](demo.gif)
 
-## Installation
-
-Heroku deployment no longer working...must clone application and run locally. :(
-
 ## Usage
 
-Navigate to the live Heroku application for immediate use. Otherwise, fork the github repo, follow the next section's instructions.
+Heroku deployment no longer working...must clone application and run locally :( To use, fork the github repo, follow the next section's instructions.
 
 ## Technology
 
