@@ -4,8 +4,6 @@
 
 Plant Swap Lite is a mobile-responsive web app that connects plant lovers in the same zip code for houseplant exchanges. This CRUD app allows users to post their favorite plant species and comment on other users posts in order to communicate if they want to swap.
 
-## [Try it yourself!](https://stark-brushlands-04635.herokuapp.com/)
-
 ## Demo
 
 Video demonstrating mobile-responsive navbar and pages:
@@ -13,7 +11,7 @@ Video demonstrating mobile-responsive navbar and pages:
 
 ## Installation
 
-None! Simply navigate to the live Heroku site.
+Heroku deployment no longer working...must clone application and run locally. :(
 
 ## Usage
 
@@ -46,5 +44,5 @@ JWT/Auth and Apollo Server Boilerplate provided by UCSD Bootcamp Professor John 
 If you have any questions, please contact me via the channels provided below:<br />
 ________________________________________
 Github: https://github.com/jaolsen7<br>
-Portfolio: https://jaolsen7.github.io/react-portfolio/<br>
+Portfolio: https://jaolsen7.github.io/json-portfolio/<br>
 Email: json.olsen@gmail.com<br>
